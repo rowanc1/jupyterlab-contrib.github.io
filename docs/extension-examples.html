@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>JupyterLab Extensions by Examples &#8212; jupyterlab-contrib 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/material.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <style>
+        .md-source__repo {
+            display: block;
+            padding-right: .6rem;
+            transition: opacity .25s;
+            font-size: .65rem;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+        .md-header-nav__source .md-source__repo:hover {
+            opacity: .7;
+        }
+
+        .md-source__repo::after,
+        .md-source__edit::after {
+            content: none
+        }
+
+        .md-source__edit {
+            font-size: .55rem;
+            font-weight: initial;
+            opacity: .75;
+        }
+        
+        .md-header-nav__source .md-source__edit:hover {
+            opacity: .9;
+        }
+    </style>
+    
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=deep-orange data-md-color-accent=orange>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#extension-examples" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a
+          href="index.html"
+          title="jupyterlab-contrib 1.0.0 documentation"
+          class="md-header-nav__button md-logo"
+        >
+           &nbsp; 
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--menu md-header-nav__button"
+          for="__drawer"
+        ></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div
+          class="md-flex__ellipsis md-header-nav__title"
+          data-md-component="title"
+        >
+          <span class="md-header-nav__topic"
+            >JupyterLab Unofficial Extensions & Tools</span
+          >
+          <span class="md-header-nav__topic"> JupyterLab Extensions by Examples </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label
+          class="md-icon md-icon--search md-header-nav__button"
+          for="__search"
+        ></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <div class="md-header-nav__source">
+          
+          <div class="md-source__icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 24 24"
+              width="28"
+              height="28"
+            >
+              <use
+                xlink:href="#__github"
+                width="24"
+                height="24"
+              ></use>
+            </svg>
+          </div>
+          
+          <div class="md-source__repository">
+            <a
+              href="https://github.com/jupyterlab-contrib/jupyterlab-contrib.github.io"
+              title="Go to repository"
+              class="md-source__repo"
+            >
+              jupyterlab-contrib
+            </a>
+            <a
+              href="https://github.com/jupyterlab-contrib/jupyterlab-contrib.github.io/edit/main/extension-examples.md"
+              title="Edit this page on GitHub"
+              class="md-source__edit"
+            >
+              Edit on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+       
+  
+  <script src="_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = ""versions.json"",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+            
+            <li class="md-tabs__item"><a href="https://jupyterlab.readthedocs.io/en/stable/" class="md-tabs__link">JupyterLab Documentation</a></li>
+            
+            <li class="md-tabs__item"><a href="https://jupyter-server.readthedocs.io/en/stable/" class="md-tabs__link">Jupyter Server Documentation</a></li>
+            
+            <li class="md-tabs__item"><a href="https://github.com/jupyterlab-contrib/jupyterlab-contrib.github.io/issues/new?labels=transfer&amp;template=transfer-repository-to-this-organization.md" class="md-tabs__link">Transfer your extension</a></li>
+            
+            <li class="md-tabs__item"><a href="https://github.com/jupyterlab-contrib/jupyterlab-contrib.github.io/issues/new?template=help-with-maintenance.md" class="md-tabs__link">I want to help</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="index.html" title="jupyterlab-contrib 1.0.0 documentation" class="md-nav__button md-logo">
+      
+        <img src="_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="index.html"
+       title="jupyterlab-contrib 1.0.0 documentation">JupyterLab Unofficial Extensions & Tools</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/jupyterlab-contrib/jupyterlab-contrib.github.io" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    jupyterlab-contrib
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Contents:</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="extensions.html" class="md-nav__link">List of extensions and tools</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="migrate_from_classical.html" class="md-nav__link">Migrate from classical Jupyter notebook</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="contributing.html" class="md-nav__link">Help supporting the extensions</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#extension-examples--page-root" class="md-nav__link">JupyterLab Extensions by Examples</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#tl-dr" class="md-nav__link">TL;DR</a>
+        </li>
+        <li class="md-nav__item"><a href="#develop-by-examples" class="md-nav__link">Develop by Examples</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#commands" class="md-nav__link">Commands</a>
+        </li>
+        <li class="md-nav__item"><a href="#command-palette" class="md-nav__link">Command Palette</a>
+        </li>
+        <li class="md-nav__item"><a href="#completer" class="md-nav__link">Completer</a>
+        </li>
+        <li class="md-nav__item"><a href="#main-widget-content-header" class="md-nav__link">Main Widget Content Header</a>
+        </li>
+        <li class="md-nav__item"><a href="#context-menu" class="md-nav__link">Context Menu</a>
+        </li>
+        <li class="md-nav__item"><a href="#custom-log-console" class="md-nav__link">Custom Log Console</a>
+        </li>
+        <li class="md-nav__item"><a href="#datagrid" class="md-nav__link">Datagrid</a>
+        </li>
+        <li class="md-nav__item"><a href="#documents" class="md-nav__link">Documents</a>
+        </li>
+        <li class="md-nav__item"><a href="#hello-world" class="md-nav__link">Hello World</a>
+        </li>
+        <li class="md-nav__item"><a href="#kernel-messaging" class="md-nav__link">Kernel Messaging</a>
+        </li>
+        <li class="md-nav__item"><a href="#kernel-output" class="md-nav__link">Kernel Output</a>
+        </li>
+        <li class="md-nav__item"><a href="#launcher" class="md-nav__link">Launcher</a>
+        </li>
+        <li class="md-nav__item"><a href="#log-messages" class="md-nav__link">Log Messages</a>
+        </li>
+        <li class="md-nav__item"><a href="#main-menu" class="md-nav__link">Main Menu</a>
+        </li>
+        <li class="md-nav__item"><a href="#react-widget" class="md-nav__link">React Widget</a>
+        </li>
+        <li class="md-nav__item"><a href="#server-hello-world" class="md-nav__link">Server Hello World</a>
+        </li>
+        <li class="md-nav__item"><a href="#settings" class="md-nav__link">Settings</a>
+        </li>
+        <li class="md-nav__item"><a href="#signals" class="md-nav__link">Signals</a>
+        </li>
+        <li class="md-nav__item"><a href="#state" class="md-nav__link">State</a>
+        </li>
+        <li class="md-nav__item"><a href="#toolbar-item" class="md-nav__link">Toolbar Item</a>
+        </li>
+        <li class="md-nav__item"><a href="#widgets" class="md-nav__link">Widgets</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#prerequisites" class="md-nav__link">Prerequisites</a>
+        </li>
+        <li class="md-nav__item"><a href="#develop-and-use-the-examples" class="md-nav__link">Develop and Use the Examples</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#build-and-install-all-examples-at-once" class="md-nav__link">Build and Install all Examples at once</a>
+        </li>
+        <li class="md-nav__item"><a href="#build-and-install-one-example" class="md-nav__link">Build and Install one Example</a>
+        </li>
+        <li class="md-nav__item"><a href="#change-the-sources" class="md-nav__link">Change the Sources</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#test-the-examples" class="md-nav__link">Test the Examples</a>
+        </li>
+        <li class="md-nav__item"><a href="#install-a-published-extension" class="md-nav__link">Install a Published Extension</a>
+        </li>
+        <li class="md-nav__item"><a href="#about-jupyterlab" class="md-nav__link">About JupyterLab</a>
+        </li>
+        <li class="md-nav__item"><a href="#credits" class="md-nav__link">Credits</a>
+        </li>
+        <li class="md-nav__item"><a href="#community-guidelines-and-code-of-conduct" class="md-nav__link">Community Guidelines and Code of Conduct</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="jupyterlab-extensions-by-examples">
+<h1 id="extension-examples--page-root">JupyterLab Extensions by Examples<a class="headerlink" href="#extension-examples--page-root" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="https://github.com/jupyterlab-contrib/extension-examples"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jupyterlab-contrib/extension-examples?style=social"/></a><a class="reference external" href="https://github.com/jupyterlab/extension-examples/actions?query=workflow%3ACI"><img alt="Github Actions Status" src="https://github.com/jupyterlab/extension-examples/workflows/CI/badge.svg"/></a>
+<a class="reference external" href="https://mybinder.org/v2/gh/jupyterlab/extension-examples/master?urlpath=lab"><img alt="Binder" src="https://mybinder.org/badge_logo.svg"/></a></p>
+<ol class="simple">
+<li><p><a class="reference external" href="#tldr">Goal</a></p></li>
+<li><p><a class="reference external" href="#develop-by-examples">Develop by Examples</a></p>
+<ol class="simple">
+<li><p><a class="reference external" href="#commands">Commands</a></p></li>
+<li><p><a class="reference external" href="#command-palette">Command Palette</a></p></li>
+<li><p>Main Widget <a class="reference external" href="#main-widget-content-header">Content Header</a></p></li>
+<li><p><a class="reference external" href="#context-menu">Context Menu</a></p></li>
+<li><p><a class="reference external" href="#custom-log-console">Custom Log Console</a></p></li>
+<li><p><a class="reference external" href="#datagrid">Datagrid</a></p></li>
+<li><p><em><a class="reference external" href="#hello-world">Hello World</a></em></p></li>
+<li><p><a class="reference external" href="#kernel-messaging">Kernel Messaging</a></p></li>
+<li><p><a class="reference external" href="#kernel-output">Kernel Output</a></p></li>
+<li><p><a class="reference external" href="#launcher">Launcher</a></p></li>
+<li><p><a class="reference external" href="#log-messages">Log Messages</a></p></li>
+<li><p><a class="reference external" href="#main-menu">Main Menu</a></p></li>
+<li><p><a class="reference external" href="#react-widget">React Widget</a></p></li>
+<li><p><em><a class="reference external" href="#server-hello-world">Server Hello World</a></em></p></li>
+<li><p><a class="reference external" href="#settings">Settings</a></p></li>
+<li><p><a class="reference external" href="#signals">Signals</a></p></li>
+<li><p><a class="reference external" href="#state">State</a></p></li>
+<li><p><a class="reference external" href="#toolbar-item">Toolbar Item</a></p></li>
+<li><p><a class="reference external" href="#widgets">Widgets</a></p></li>
+</ol>
+</li>
+<li><p><a class="reference external" href="#prerequisites">Prerequisites</a></p></li>
+<li><p><a class="reference external" href="#develop-and-use-the-examples">Develop and Use the Examples</a></p></li>
+<li><p><a class="reference external" href="#test-the-examples">Test the Examples</a></p></li>
+<li><p><a class="reference external" href="#install-a-published-extension">Install a Published Extension</a></p></li>
+<li><p><a class="reference external" href="#about-jupyterlab">About JupyterLab</a></p></li>
+<li><p><a class="reference external" href="#credits">Credits</a></p></li>
+<li><p><a class="reference external" href="#community-guidelines-and-code-of-conduct">Community Guidelines and Code of Conduct</a></p></li>
+</ol>
+<section id="tl-dr">
+<h2 id="tl-dr">TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">¶</a></h2>
+<p>The goal of this repository is to show how to develop extensions for <a class="reference external" href="https://github.com/jupyterlab/jupyterlab">JupyterLab</a>, presented as short tutorial series.</p>
+<p>To get started:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># clone the repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jupyterlab/extension-examples.git<span class="w"> </span>jupyterlab-extension-examples
+
+<span class="c1"># go to the extension examples folder</span>
+<span class="nb">cd</span><span class="w"> </span>jupyterlab-extension-examples
+
+<span class="c1"># create a new environment</span>
+conda<span class="w"> </span>env<span class="w"> </span>create
+
+<span class="c1"># activate the environment</span>
+conda<span class="w"> </span>activate<span class="w"> </span>jupyterlab-extension-examples
+
+<span class="c1"># go to the hello world example</span>
+<span class="nb">cd</span><span class="w"> </span>hello-world
+
+<span class="c1"># install the extension in editable mode</span>
+python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+
+<span class="c1"># install your development version of the extension with JupyterLab</span>
+jupyter<span class="w"> </span>labextension<span class="w"> </span>develop<span class="w"> </span>.<span class="w"> </span>--overwrite
+
+<span class="c1"># build the TypeScript source after making changes</span>
+jlpm<span class="w"> </span>run<span class="w"> </span>build
+
+<span class="c1"># start JupyterLab</span>
+jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+<p>The examples currently target <strong>JupyterLab 3.1 or later</strong>.</p>
+<p>If you would like to use the examples with JupyterLab 2.x, check out the <a class="reference external" href="https://github.com/jupyterlab/extension-examples/tree/2.x">2.x branch</a>.</p>
+<p>If you would like to use the examples with JupyterLab 1.x, check out the <a class="reference external" href="https://github.com/jupyterlab/extension-examples/tree/1.x">1.x branch</a>.</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">1.x</span></code> and <code class="docutils literal notranslate"><span class="pre">2.x</span></code> branches are not updated anymore.</p>
+</section>
+<section id="develop-by-examples">
+<h2 id="develop-by-examples">Develop by Examples<a class="headerlink" href="#develop-by-examples" title="Permalink to this heading">¶</a></h2>
+<p>You may find it easier to learn how to create extensions <em>by examples</em>, instead of going through the documentation.</p>
+<p>Start with the <a class="reference external" href="hello-world">Hello World</a> and then jump to the topic you are interested in.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="commands">Commands</a></p></li>
+<li><p><a class="reference external" href="command-palette">Command Palette</a></p></li>
+<li><p><a class="reference external" href="completer">Completer</a></p></li>
+<li><p>Main Widget <a class="reference external" href="contentheader">Content Header</a></p></li>
+<li><p><a class="reference external" href="context-menu">Context Menu</a></p></li>
+<li><p><a class="reference external" href="custom-log-console">Custom Log Console</a></p></li>
+<li><p><a class="reference external" href="datagrid">Datagrid</a></p></li>
+<li><p><a class="reference external" href="documents">Documents</a></p></li>
+<li><p><a class="reference external" href="hello-world">Hello World</a></p></li>
+<li><p><a class="reference external" href="kernel-messaging">Kernel Messaging</a></p></li>
+<li><p><a class="reference external" href="kernel-output">Kernel Output</a></p></li>
+<li><p><a class="reference external" href="launcher">Launcher</a></p></li>
+<li><p><a class="reference external" href="log-messages">Log Messages</a></p></li>
+<li><p><a class="reference external" href="main-menu">Main Menu</a></p></li>
+<li><p><a class="reference external" href="react-widget">React Widget</a></p></li>
+<li><p><a class="reference external" href="server-extension">Server Hello World</a></p></li>
+<li><p><a class="reference external" href="settings">Settings</a></p></li>
+<li><p><a class="reference external" href="signals">Signals</a></p></li>
+<li><p><a class="reference external" href="state">State</a></p></li>
+<li><p><a class="reference external" href="toolbar-button">Toolbar item</a></p></li>
+<li><p><a class="reference external" href="widgets">Widgets</a></p></li>
+</ul>
+<p>You can expect from each example:</p>
+<ul class="simple">
+<li><p>An explanation of its functionality.</p></li>
+<li><p>An image or screencast showing its usage.</p></li>
+<li><p>The list of used JupyterLab API and Extension Points.</p></li>
+<li><p>Explanations of the internal working, illustrated with code snippets.</p></li>
+</ul>
+<p>We have structured the examples based on the <a class="reference external" href="https://jupyterlab.readthedocs.io/en/stable/extension/extension_points.html">extension points</a>. Browse the previews below or skip them and <a class="reference external" href="#prerequisites">jump directly to the sections for developers</a>.</p>
+<p>You are welcome to open any <a class="reference external" href="https://github.com/jupyterlab/extension-examples/issues">issue</a> or <a class="reference external" href="https://github.com/jupyterlab/extension-examples/pulls">pull request</a>.</p>
+<section id="commands">
+<h3 id="commands"><a class="reference external" href="commands">Commands</a><a class="headerlink" href="#commands" title="Permalink to this heading">¶</a></h3>
+<p>Extend the main app with a Command.</p>
+<p><a class="reference external" href="commands"><img alt="Commmand example" src="commands/preview.png"/></a></p>
+</section>
+<section id="command-palette">
+<h3 id="command-palette"><a class="reference external" href="command-palette">Command Palette</a><a class="headerlink" href="#command-palette" title="Permalink to this heading">¶</a></h3>
+<p>Register commands in the Command Palette.</p>
+<p><a class="reference external" href="command-palette"><img alt="Commmand Palette" src="command-palette/preview.png"/></a></p>
+</section>
+<section id="completer">
+<h3 id="completer"><a class="reference external" href="completer">Completer</a><a class="headerlink" href="#completer" title="Permalink to this heading">¶</a></h3>
+<p>Customize tab autocomplete data sources.</p>
+<p><a class="reference external" href="completer"><img alt="Completer" src="completer/preview.png"/></a></p>
+</section>
+<section id="main-widget-content-header">
+<h3 id="main-widget-content-header">Main Widget <a class="reference external" href="contentheader">Content Header</a><a class="headerlink" href="#main-widget-content-header" title="Permalink to this heading">¶</a></h3>
+<p>Put widgets at the top of a main JupyterLab area widget.</p>
+<p><a class="reference external" href="contentheader"><img alt="contentHeader" src="contentheader/preview.gif"/></a></p>
+</section>
+<section id="context-menu">
+<h3 id="context-menu"><a class="reference external" href="context-menu">Context Menu</a><a class="headerlink" href="#context-menu" title="Permalink to this heading">¶</a></h3>
+<p>Add a new button to an existent context menu.</p>
+<p><a class="reference external" href="context-menu"><img alt="Context Menu" src="context-menu/preview.gif"/></a></p>
+</section>
+<section id="custom-log-console">
+<h3 id="custom-log-console"><a class="reference external" href="custom-log-console">Custom Log Console</a><a class="headerlink" href="#custom-log-console" title="Permalink to this heading">¶</a></h3>
+<p>Create a new log console.</p>
+<p><a class="reference external" href="custom-log-console"><img alt="Custom Log Console" src="custom-log-console/preview.gif"/></a></p>
+</section>
+<section id="datagrid">
+<h3 id="datagrid"><a class="reference external" href="datagrid">Datagrid</a><a class="headerlink" href="#datagrid" title="Permalink to this heading">¶</a></h3>
+<p>Display a Datagrid as a Lumino Widget.</p>
+<p><a class="reference external" href="datagrid"><img alt="Datagrid" src="datagrid/preview.png"/></a></p>
+</section>
+<section id="documents">
+<h3 id="documents"><a class="reference external" href="documents">Documents</a><a class="headerlink" href="#documents" title="Permalink to this heading">¶</a></h3>
+<p>Create new documents and make them collaborative.</p>
+<p><a class="reference external" href="documents"><img alt="Documents" src="documents/preview.png"/></a></p>
+</section>
+<section id="hello-world">
+<h3 id="hello-world"><a class="reference external" href="hello-world">Hello World</a><a class="headerlink" href="#hello-world" title="Permalink to this heading">¶</a></h3>
+<p>Set up the development environment and print to the console.</p>
+<p><a class="reference external" href="hello-world"><img alt="Hello World" src="hello-world/preview.png"/></a></p>
+</section>
+<section id="kernel-messaging">
+<h3 id="kernel-messaging"><a class="reference external" href="kernel-messaging">Kernel Messaging</a><a class="headerlink" href="#kernel-messaging" title="Permalink to this heading">¶</a></h3>
+<p>Interact with a kernel from an extension.</p>
+<p><a class="reference external" href="kernel-messaging"><img alt="Kernel Messages" src="kernel-messaging/preview.gif"/></a></p>
+</section>
+<section id="kernel-output">
+<h3 id="kernel-output"><a class="reference external" href="kernel-output">Kernel Output</a><a class="headerlink" href="#kernel-output" title="Permalink to this heading">¶</a></h3>
+<p>Render kernel messages in an OuputArea.</p>
+<p><a class="reference external" href="kernel-output"><img alt="OutputArea class" src="kernel-output/preview.gif"/></a></p>
+</section>
+<section id="launcher">
+<h3 id="launcher"><a class="reference external" href="launcher">Launcher</a><a class="headerlink" href="#launcher" title="Permalink to this heading">¶</a></h3>
+<p>Start your extension from the Launcher.</p>
+<p><a class="reference external" href="launcher"><img alt="Launcher" src="launcher/preview.gif"/></a></p>
+</section>
+<section id="log-messages">
+<h3 id="log-messages"><a class="reference external" href="log-messages">Log Messages</a><a class="headerlink" href="#log-messages" title="Permalink to this heading">¶</a></h3>
+<p>Send a log message to the log console.</p>
+<p><a class="reference external" href="log-messages"><img alt="Log Messages" src="log-messages/preview.gif"/></a></p>
+</section>
+<section id="main-menu">
+<h3 id="main-menu"><a class="reference external" href="main-menu">Main Menu</a><a class="headerlink" href="#main-menu" title="Permalink to this heading">¶</a></h3>
+<p>Add a Menu to the main app.</p>
+<p><a class="reference external" href="main-menu"><img alt="Main Menu" src="main-menu/preview.png"/></a></p>
+</section>
+<section id="react-widget">
+<h3 id="react-widget"><a class="reference external" href="react-widget">React Widget</a><a class="headerlink" href="#react-widget" title="Permalink to this heading">¶</a></h3>
+<p>Create a React.js Widget in JupyterLab.</p>
+<p><a class="reference external" href="react-widget"><img alt="react-widget" src="react-widget/preview.gif"/></a></p>
+</section>
+<section id="server-hello-world">
+<h3 id="server-hello-world"><a class="reference external" href="server-extension">Server Hello World</a><a class="headerlink" href="#server-hello-world" title="Permalink to this heading">¶</a></h3>
+<p>Create a minimal extension with backend (i.e. server) and frontend parts.</p>
+<p><a class="reference external" href="server-extension"><img alt="Server Hello World" src="server-extension/preview.png"/></a></p>
+</section>
+<section id="settings">
+<h3 id="settings"><a class="reference external" href="settings">Settings</a><a class="headerlink" href="#settings" title="Permalink to this heading">¶</a></h3>
+<p>Create and use new Settings for your extension.</p>
+<p><a class="reference external" href="settings"><img alt="Settings" src="settings/preview.gif"/></a></p>
+</section>
+<section id="signals">
+<h3 id="signals"><a class="reference external" href="signals">Signals</a><a class="headerlink" href="#signals" title="Permalink to this heading">¶</a></h3>
+<p>Use Signals to allow Widgets communicate with each others.</p>
+<p><a class="reference external" href="signals"><img alt="Button with Signal" src="signals/preview.png"/></a></p>
+</section>
+<section id="state">
+<h3 id="state"><a class="reference external" href="state">State</a><a class="headerlink" href="#state" title="Permalink to this heading">¶</a></h3>
+<p>Use State persistence in an extension.</p>
+<p><a class="reference external" href="state"><img alt="State" src="state/preview.gif"/></a></p>
+</section>
+<section id="toolbar-item">
+<h3 id="toolbar-item"><a class="reference external" href="toolbar-button">Toolbar Item</a><a class="headerlink" href="#toolbar-item" title="Permalink to this heading">¶</a></h3>
+<p>Add a new button to the notebook toolbar.</p>
+<p><a class="reference external" href="toolbar-button"><img alt="Toolbar button" src="toolbar-button/Preview.gif"/></a></p>
+</section>
+<section id="widgets">
+<h3 id="widgets"><a class="reference external" href="widgets">Widgets</a><a class="headerlink" href="#widgets" title="Permalink to this heading">¶</a></h3>
+<p>Add a new Widget element to the main window.</p>
+<p><a class="reference external" href="widgets"><img alt="Custom Tab" src="widgets/preview.png"/></a></p>
+</section>
+</section>
+<section id="prerequisites">
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<p>Writing an extension requires basic knowledge of JavaScript, Typescript and potentially Python.</p>
+<p><em>Don’t be scared of Typescript, even if you never coded in TypeScript before you touch
+JupyterLab you may find it easier to understand than pure JavaScript if you have a
+basic understanding of object oriented programming and types.</em></p>
+<p>These examples are developed and tested on top of JupyterLab.
+You can create a <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">conda</a> environment to get started
+after cloning this repository.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>conda<span class="w"> </span>activate<span class="w"> </span>jupyterlab-extension-examples
+</pre></div>
+</div>
+<blockquote>
+<div><p>The previous command will use the <a class="reference external" href="https://github.com/jupyterlab/extension-examples/blob/master/environment.yml">environment.yaml</a> file as requirements for the environment.</p>
+</div></blockquote>
+</section>
+<section id="develop-and-use-the-examples">
+<h2 id="develop-and-use-the-examples">Develop and Use the Examples<a class="headerlink" href="#develop-and-use-the-examples" title="Permalink to this heading">¶</a></h2>
+<section id="build-and-install-all-examples-at-once">
+<h3 id="build-and-install-all-examples-at-once">Build and Install all Examples at once<a class="headerlink" href="#build-and-install-all-examples-at-once" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jlpm
+jlpm<span class="w"> </span>build-ext
+jlpm<span class="w"> </span>install-py
+jlpm<span class="w"> </span>install-ext
+jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+<p>To rebuild all the extensions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jlpm<span class="w"> </span>build-ext
+</pre></div>
+</div>
+<p>To clean the lib folders:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jlpm<span class="w"> </span>clean-ext
+</pre></div>
+</div>
+</section>
+<section id="build-and-install-one-example">
+<h3 id="build-and-install-one-example">Build and Install one Example<a class="headerlink" href="#build-and-install-one-example" title="Permalink to this heading">¶</a></h3>
+<p>Go to the example directory you want to install, e.g. <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">./hello-world</span></code>, and run the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+jupyter<span class="w"> </span>labextension<span class="w"> </span>develop<span class="w"> </span>.<span class="w"> </span>--overwrite
+</pre></div>
+</div>
+<p>Rebuild the extension:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jlpm<span class="w"> </span>run<span class="w"> </span>build
+</pre></div>
+</div>
+<p>You can now start JupyterLab and check if your extension is working fine:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+</section>
+<section id="change-the-sources">
+<h3 id="change-the-sources">Change the Sources<a class="headerlink" href="#change-the-sources" title="Permalink to this heading">¶</a></h3>
+<p>If you want to develop and iterate on the code, you will need to open 2 terminals.</p>
+<p>In terminal 1, go to the extension folder and run the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jlpm<span class="w"> </span>watch
+</pre></div>
+</div>
+<p>Then in terminal 2, start JupyterLab with the watch flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab<span class="w"> </span>--watch
+</pre></div>
+</div>
+<p>From there, you can change your extension source code, it will be recompiled,
+and you can refresh your browser to see your changes.</p>
+<p>We are using <a class="reference external" href="https://github.com/zakhenry/embedme">embedme</a> to embed code snippets into the markdown READMEs. If you make changes to the source code, ensure you update the README and run <code class="docutils literal notranslate"><span class="pre">jlpm</span> <span class="pre">embedme</span></code> from the root of the repository to regenerate the READMEs.</p>
+</section>
+</section>
+<section id="test-the-examples">
+<h2 id="test-the-examples">Test the Examples<a class="headerlink" href="#test-the-examples" title="Permalink to this heading">¶</a></h2>
+<p>The examples are automatically tested for:</p>
+<ul class="simple">
+<li><p>Homogeneous configuration:<br/>Configuration files are compared to the reference ones of the <em>hello-world</em> example</p></li>
+<li><p>TypeScript code lint</p></li>
+<li><p>Installation in JupyterLab:<br/>The installation is checked by listing the installed extension and running JupyterLab with the helper <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">jupyterlab.browser_check</span></code></p></li>
+<li><p>Integration test:<br/>Those tests are emulating user action in JupyterLab to check the extension is behaving as expected.<br/>The tests are defined in the <code class="docutils literal notranslate"><span class="pre">ui-tests</span></code> subfolder within each example.
+This is possible thanks to a tool called <a class="reference external" href="https://playwright.dev/">playwright</a>.</p></li>
+</ul>
+</section>
+<section id="install-a-published-extension">
+<h2 id="install-a-published-extension">Install a Published Extension<a class="headerlink" href="#install-a-published-extension" title="Permalink to this heading">¶</a></h2>
+<p>Once your extension is published on <a class="reference external" href="https://pypi.org/">pypi.org</a> (outside of this scope), you can install it
+with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>&lt;published_extension&gt;
+</pre></div>
+</div>
+</section>
+<section id="about-jupyterlab">
+<h2 id="about-jupyterlab">About JupyterLab<a class="headerlink" href="#about-jupyterlab" title="Permalink to this heading">¶</a></h2>
+<p>JupyterLab can be used as a platform to combine existing data-science components into a
+new powerful application that can be deployed remotely to many users. Some of the higher
+level components that can be used are text editors, terminals, notebooks, interactive widgets,
+filebrowser, renderers for different file formats that provide access to an enormous ecosystem
+of libraries from different languages.</p>
+<p>Complementary to these examples, you can rely on the official JupyterLab documentation.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://jupyterlab.readthedocs.io/en/stable/extension/extension_dev.html">Extension Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyterlab.readthedocs.io/en/stable/extension/extension_points.html">Common Extension Points</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://jupyterLab.readthedocs.io/en/stable/extension/extension_tutorial.html">Astronomy Picture of the Day JupyterLab Extension</a></li>
+</ul>
+</div>
+</section>
+<section id="credits">
+<h2 id="credits">Credits<a class="headerlink" href="#credits" title="Permalink to this heading">¶</a></h2>
+<p>We would like to thank <a class="reference external" href="https://github.com/MMesch">MMesch</a> for <a class="reference external" href="https://github.com/MMesch/labextension_tutorial">initiating this work</a>, as well as everyone else who contributed!</p>
+</section>
+<section id="community-guidelines-and-code-of-conduct">
+<h2 id="community-guidelines-and-code-of-conduct">Community Guidelines and Code of Conduct<a class="headerlink" href="#community-guidelines-and-code-of-conduct" title="Permalink to this heading">¶</a></h2>
+<p>This examples repository is a Jupyter project and follows the Jupyter
+<a class="reference external" href="https://jupyter.readthedocs.io/en/latest/community/content-community.html">Community Guides and Code of Conduct</a>.</p>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2020-2023, JupyterLab Contrib Team.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
